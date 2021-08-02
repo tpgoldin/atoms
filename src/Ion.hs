@@ -1,17 +1,26 @@
 module Ion (
   Ion(..),
+  ElectronGainer(..),
+  electronGainer,
+  ElectronLoser(..),
+  electronLoser,
   loseElectrons,
   gainElectrons
 ) where
 
-import ChemicalElement
 import IonRatios
+import ElectronGainer
+import ElectronLoser
 
-data Ion = Cation { cationChemicalElement::ChemicalElement, catRatio::IonRatio } |
-           Anion { anionChemicalElement::ChemicalElement, anRatio::IonRatio } deriving Eq
+data Ion = Cation { catElectronLoser::ElectronLoser, catRatio::IonRatio } |
+           Anion { anElectronGainer::ElectronGainer, anRatio::IonRatio } deriving Eq
 
-loseElectrons :: ChemicalElement -> Int -> Ion
-loseElectrons ce n = Cation { cationChemicalElement=ce, catRatio=cationRatio n }
+instance Show Ion where
+  show Cation { catElectronLoser=cel, catRatio=r } = mconcat [show cel, show r]
+  show Anion { anElectronGainer=aeg, anRatio=r } = mconcat [show aeg, show r]
 
-gainElectrons :: ChemicalElement -> Int -> Ion
-gainElectrons ce n = Anion { anionChemicalElement=ce, anRatio=anionRatio n }
+loseElectrons :: ElectronLoser -> Int -> Ion
+loseElectrons el n = Cation { catElectronLoser=el, catRatio=cationRatio n }
+
+gainElectrons :: ElectronGainer -> Int -> Ion
+gainElectrons eg n = Anion { anElectronGainer=eg, anRatio=anionRatio n }

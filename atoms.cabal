@@ -48,6 +48,8 @@ library
       Compound
       Molecule
       Molecules
+      ElectronGainer
+      ElectronLoser
       Ion
       IonRatios
       Lib
