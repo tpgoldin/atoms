@@ -79,6 +79,7 @@ test-suite atoms-test
   main-is: Spec.hs
   other-modules:
       ChemicalReactionSpec
+      IonSpec
       MoleculeSpec
       Paths_atoms
   hs-source-dirs:
