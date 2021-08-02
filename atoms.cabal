@@ -49,6 +49,7 @@ library
       Molecule
       Molecules
       Ion
+      IonRatios
       Lib
   other-modules:
       Paths_atoms

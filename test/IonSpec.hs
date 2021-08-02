@@ -3,8 +3,7 @@ module IonSpec where
 import Test.Hspec
 
 import Ion
-import Proton
-import Electron
+import IonRatios
 import ChemicalElements
 
 spec :: Spec
@@ -15,7 +14,7 @@ spec = do
       let actual = na `loseElectrons` 1
 
       cationChemicalElement actual `shouldBe` na
-      protons actual `shouldBe` [proton]
+      catRatio actual `shouldBe` cationRatio 1
 
   describe "Anion" $ do
     it "An atom gaining an electron creates an anion" $ do
@@ -23,4 +22,4 @@ spec = do
       let actual = o `gainElectrons` 2
 
       anionChemicalElement actual `shouldBe` o
-      electrons actual `shouldBe` [electron, electron]
+      anRatio actual `shouldBe` anionRatio 2

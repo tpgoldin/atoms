@@ -4,15 +4,14 @@ module Ion (
   gainElectrons
 ) where
 
-import Electron
-import Proton
 import ChemicalElement
+import IonRatios
 
-data Ion = Cation { cationChemicalElement::ChemicalElement, protons::[Proton] } |
-           Anion { anionChemicalElement::ChemicalElement, electrons::[Electron] } deriving Eq
+data Ion = Cation { cationChemicalElement::ChemicalElement, catRatio::IonRatio } |
+           Anion { anionChemicalElement::ChemicalElement, anRatio::IonRatio } deriving Eq
 
 loseElectrons :: ChemicalElement -> Int -> Ion
-loseElectrons ce n = Cation { cationChemicalElement=ce, protons=replicate n proton }
+loseElectrons ce n = Cation { cationChemicalElement=ce, catRatio=cationRatio n }
 
 gainElectrons :: ChemicalElement -> Int -> Ion
-gainElectrons ce n = Anion { anionChemicalElement=ce, electrons=replicate n electron }
+gainElectrons ce n = Anion { anionChemicalElement=ce, anRatio=anionRatio n }
