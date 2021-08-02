@@ -50,6 +50,6 @@ spec = do
 
       let ce = chemicalEquation [cr1, cr2] [cp1, cp2]
 
-      show ce `shouldBe` ""
+      chemicalReactantCompoundMapping cr1 `shouldBe` M.fromList [(carbon, 4), (hydrogen, 12)]
 
       isBalanced ce `shouldBe` True

@@ -48,6 +48,7 @@ library
       Compound
       Molecule
       Molecules
+      Ion
       Lib
   other-modules:
       Paths_atoms

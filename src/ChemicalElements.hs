@@ -1,7 +1,8 @@
 module ChemicalElements (
  hydrogen,
  carbon,
- oxygen
+ oxygen,
+ sodium
 ) where
 
 import ChemicalElement
@@ -15,3 +16,6 @@ carbon = chemicalElement "Carbon" "C" 6 6 6 groupFour
 
 oxygen :: ChemicalElement
 oxygen = chemicalElement "Oxygen" "O" 8 8 8 groupSix
+
+sodium :: ChemicalElement
+sodium = chemicalElement "Sodium" "Na" 11 12 11 groupOne
